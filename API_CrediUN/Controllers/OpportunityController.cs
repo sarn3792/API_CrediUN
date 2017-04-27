@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using API_CrediUN.Models;
 
 namespace API_CrediUN.Controllers
 {
@@ -17,7 +18,11 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.contractNumber = contractNumber;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetByContractNumber();
+
                 if(result != string.Empty)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -38,10 +43,14 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.idOpportunity = idOpportunity;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetCutOffDate();
+
                 if (result != string.Empty)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, result;
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
                 }
                 else
                 {
@@ -59,7 +68,11 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.idOpportunity = idOpportunity;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetBalance();
+
                 if (result != string.Empty)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -81,7 +94,11 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.idOpportunity = idOpportunity;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetNextPaymentDue();
+
                 if (result != string.Empty)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -103,7 +120,11 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.idOpportunity = idOpportunity;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetCurrentMonthly();
+
                 if (result != string.Empty)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
@@ -125,7 +146,11 @@ namespace API_CrediUN.Controllers
         {
             try
             {
-                string result = string.Empty;
+                Opportunity op = new Opportunity();
+                op.idOpportunity = idOpportunity;
+                OpportunityModel opModel = new OpportunityModel(op);
+                string result = opModel.GetOverdueBalance();
+
                 if (result != string.Empty)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, result);
