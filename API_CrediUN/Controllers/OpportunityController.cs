@@ -21,7 +21,7 @@ namespace API_CrediUN.Controllers
                 Opportunity op = new Opportunity();
                 op.contractNumber = contractNumber;
                 OpportunityModel opModel = new OpportunityModel(op);
-                string result = opModel.GetByContractNumber();
+                string result = "{" + opModel.GetByContractNumber() + "}";
 
                 if(result != string.Empty)
                 {
