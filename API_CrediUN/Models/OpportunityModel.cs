@@ -39,7 +39,7 @@ namespace API_CrediUN.Models
         {
             try
             {
-                String query = String.Format(@"SELECT TOP 1 CONVERT(varchar(2),AD.DueDate, 103) 'DiaDeCorte', po.PKOportunity 'Oportunidad'
+                String query = String.Format(@"SELECT TOP 1 CONVERT(varchar(2),AD.DueDate, 103) + '/' + CONVERT(varchar(2), AD.DueDate, 101) 'DiaDeCorte' , po.PKOportunity 'Oportunidad'
                                             FROM PaymentsOportunity po
                                             INNER JOIN PaymentsCustomer pc ON PO.FKCliente = PC.PKCustomer
                                             INNER JOIN ARDoc AD ON AD.CustId = PC.PKCustomerSL
@@ -128,7 +128,7 @@ namespace API_CrediUN.Models
                 DataTable aux = db.GetDataTable(query);
                 if (aux.Rows.Count > 0)
                 {
-                    return string.Format("Mensualidad {0} de {1}", aux.Rows[0]["MensualidadActual"].ToString(), aux.Rows[0]["TotalMensualidades"].ToString());
+                    return string.Format("{0}/{1}",aux.Rows[0]["MensualidadActual"].ToString(), aux.Rows[0]["TotalMensualidades"].ToString());
                 }
 
                 return string.Empty;
